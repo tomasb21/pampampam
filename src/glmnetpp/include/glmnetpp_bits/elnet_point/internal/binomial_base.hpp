@@ -1095,6 +1095,7 @@ private:
     // current views of column for given class ic (see set_class())
     Eigen::Map<vec_t> bs_ic_;
     Eigen::Map<vec_t> b_ic_;
+    Eigen::Map<vec_t> p_ic_;
     Eigen::Map<vec_t> q_ic_;
     Eigen::Map<const vec_t> y_ic_;
     Eigen::Map<vec_t> xv_ic_;
