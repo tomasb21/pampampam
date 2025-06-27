@@ -356,15 +356,21 @@ glmnet=function(x,y,family=c("gaussian","binomial","poisson","multinomial","cox"
     if(is.null(np)|(np[2]<=1))stop("x should be a matrix with 2 or more columns")
     nobs=as.integer(np[1])
     nvars=as.integer(np[2])
-    if (is.vector(y)) { #we are assuming that y is a vector or a matrix
-        nc <- as.double(length(unique(y)))
-    } else if (is.matrix(y)) {
-          if (!all(y %in% c(0, 1)) || any(rowSums(y) != 1)) {
-            stop("y should be a one-hot encoded matrix")
-          } else {
-            nc <- as.double(ncol(y))
-          }
+    nc=dim(y)
+    if(is.null(nc)){
+      ## Need to construct a y matrix, and include the weights
+      y=as.factor(y)
+      ntab=table(y)
+      minclass=min(ntab)
+      if(minclass<=1)stop("one multinomial or binomial class has 1 or 0 observations; not allowed")
+      if(minclass<8)warning("one multinomial or binomial class has fewer than 8  observations; dangerous ground")
+      classnames=names(ntab)
+      nc=as.integer(length(ntab))
+      y=diag(nc)[as.numeric(y),]
     }
+    
+    
+    
     ##check for NAs
     if(any(is.na(x)))stop("x has missing values; consider using makeX() to impute them")
     if(is.null(weights))weights=rep(1,nobs)
