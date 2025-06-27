@@ -478,7 +478,7 @@ public:
             const CLType& cl,
             const JUType& ju,
             const IntParamType& int_param)
-        : base_t(isd, intr, kopt, thr, maxit, nx, nlp, ia, y.rows(), vp.size(), mp.size(), dev0, w, vp, mp, cl, ju, int_param)
+        : base_t(isd, intr, kopt, thr, maxit, nx, nlp, ia, y.rows(), vp.size(), dev0, w, vp, mp, cl, ju, int_param)
         , nc_(y.cols())
         , exmx_(int_param.exmx)
         , exmn_(-exmx_)
