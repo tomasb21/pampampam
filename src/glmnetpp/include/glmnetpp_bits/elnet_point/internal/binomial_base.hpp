@@ -564,7 +564,7 @@ protected:
     void initialize(const PackType& p) 
     { 
         base_t::compute_strong_map(
-                this->abs_grad(), this->penalt(), this->penalty(), this->strong_map(),
+                this->abs_grad(), this->penalty(), this->penalty(), this->strong_map(),
                 p.elastic_prop(), p.lmda(), p.prev_lmda(), 
                 [&](auto k) { return !this->is_excluded(k) || !this->exclusion()[k]; });
     }
