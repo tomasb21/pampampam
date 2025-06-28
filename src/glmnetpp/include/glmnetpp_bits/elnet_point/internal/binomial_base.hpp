@@ -805,8 +805,8 @@ public:
 
     GLMNETPP_STRONG_INLINE value_t& beta(index_t k) { return b_ic_(k+1); }
     GLMNETPP_STRONG_INLINE value_t beta(index_t k) const { return b_ic_(k+1); }
-    GLMNETPP_STRONG_INLINE value_t& penalty_matrix(index_t k) { return p_ic_(k+1); }
-    GLMNETPP_STRONG_INLINE value_t penalty_matrix(index_t k) const { return p_ic_(k+1); }
+    GLMNETPP_STRONG_INLINE value_t& penalty_matrix(index_t k) { return p_ic_(k); }
+    GLMNETPP_STRONG_INLINE value_t penalty_matrix(index_t k) const { return p_ic_(k); }
 
 protected:
     using base_t::initialize_resid;
