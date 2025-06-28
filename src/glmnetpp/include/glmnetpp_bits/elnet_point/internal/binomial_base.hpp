@@ -564,7 +564,7 @@ protected:
     void initialize(const PackType& p) 
     { 
         base_t::compute_strong_map(
-                this->abs_grad(), this->penalty_matrix(), this->penalty_matrix(), this->strong_map(),
+                this->abs_grad(), this->penalt(), this->penalty(), this->strong_map(),
                 p.elastic_prop(), p.lmda(), p.prev_lmda(), 
                 [&](auto k) { return !this->is_excluded(k) || !this->exclusion()[k]; });
     }
@@ -637,7 +637,7 @@ protected:
     bool update_strong_map(value_t l1_regul)
     {
         return base_t::compute_strong_map(
-            this->abs_grad(), this->penalty_matrix(), this->penalty_matrix(), this->strong_map(), l1_regul,
+            this->abs_grad(), this->penalty(), this->penalty(), this->strong_map(), l1_regul,
             [&](auto k) { return this->strong_map()[k] || !this->exclusion()[k]; });
     }
 
