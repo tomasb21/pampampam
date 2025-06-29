@@ -308,6 +308,7 @@ protected:
     GLMNETPP_STRONG_INLINE auto thresh() const { return thr_; }
     GLMNETPP_STRONG_INLINE const auto& endpts() const { return cl_; }
     GLMNETPP_STRONG_INLINE const auto& penalty() const { return vp_; }
+    GLMNETPP_STRONG_INLINE const auto& penalty_matrix() const { return mp_; }
     GLMNETPP_STRONG_INLINE const auto& exclusion() const { return ju_; }
     GLMNETPP_STRONG_INLINE auto active_idx(index_t k) const { return mm_(k)-1; }
 
