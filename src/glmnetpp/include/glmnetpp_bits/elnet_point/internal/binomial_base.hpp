@@ -486,7 +486,7 @@ public:
         , emax_(1.0 / emin_)
         , b_(vp.size() + 1, y.cols())
         , bs_(vp.size() + 1, y.cols())
-        , p_(mp.rows(), y.cols())
+        , p_(mp.size(), y.cols())
         , q_(y.rows(), y.cols())
         , sxp_(y.rows())
         , y_(y.data(), y.rows(), y.cols())
