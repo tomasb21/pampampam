@@ -918,7 +918,7 @@ protected:
 
         std::for_each(begin, end, 
                 [&](auto l) {  
-                    if (this->penalty_matrix()(l) <= 0) { s = b.row(l+1).sum()/nc; }
+                    if (this->penalty()(l) <= 0) { s = b.row(l+1).sum()/nc; }
                     else { s = elc(beta, this->endpts().col(l), b.row(l+1)); }
                     b.row(l+1).array() -= s;
                     update_y_pred_f(l, s, di_);
