@@ -104,7 +104,7 @@ protected:
     compute_strong_map(
             const GType& g,
             const VPType& penalty,
-            const MPType& penalty_matrix,
+            const MPType& mp,
             SType& strong_map,
             value_t tlam,
             SkipType skip_f) 
@@ -137,7 +137,7 @@ protected:
     compute_strong_map(
             const GType& g,
             const VPType& penalty,
-            const MPType& penalty_matrix,
+            const MPType& mp,
             SType& strong_map,
             value_t tlam,
             FType f,
@@ -171,7 +171,7 @@ protected:
     compute_strong_map(
             const GType& g,
             const VPType& penalty,
-            const MPType& penalty_matrix,
+            const MPType& mp,
             SType& strong_map,
             value_t beta,
             value_t lmda,
@@ -179,7 +179,7 @@ protected:
             SkipType skip_f) 
     {
         auto tlam = beta * (2.0 * lmda - prev_lmda);
-        return compute_strong_map(g, penalty, penalty_matrix, strong_map, tlam, skip_f);
+        return compute_strong_map(g, penalty, mp, strong_map, tlam, skip_f);
     }
 
     /*
@@ -196,7 +196,7 @@ protected:
     compute_strong_map(
             const GType& g,
             const VPType& penalty,
-            const MPType& penalty_matrix,
+            const MPType& mp,
             SType& strong_map,
             value_t beta,
             value_t lmda,
@@ -205,7 +205,7 @@ protected:
             SkipType skip_f) 
     {
         auto tlam = beta * (2.0 * lmda - prev_lmda);
-        return compute_strong_map(g, penalty, penalty_matrix, strong_map, tlam, f, skip_f);
+        return compute_strong_map(g, penalty, mp, strong_map, tlam, f, skip_f);
     }
 
     template <class RType, class XType>
@@ -308,7 +308,6 @@ protected:
     GLMNETPP_STRONG_INLINE auto thresh() const { return thr_; }
     GLMNETPP_STRONG_INLINE const auto& endpts() const { return cl_; }
     GLMNETPP_STRONG_INLINE const auto& penalty() const { return vp_; }
-    GLMNETPP_STRONG_INLINE const auto& penalty_matrix() const { return mp_; }
     GLMNETPP_STRONG_INLINE const auto& exclusion() const { return ju_; }
     GLMNETPP_STRONG_INLINE auto active_idx(index_t k) const { return mm_(k)-1; }
 
